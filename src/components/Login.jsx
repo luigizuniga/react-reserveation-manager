@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Navbar from "./Navbar";
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -21,6 +23,9 @@ const Login = () => {
   };
 
   return (
+    <>
+    {/* Menú de navegación */}
+    <Navbar/>
     <section className="section">
       <div className="container">
         <h1 className="title">Iniciar Sesión</h1>
@@ -61,6 +66,7 @@ const Login = () => {
         </form>
       </div>
     </section>
+    </>
   );
 }
 

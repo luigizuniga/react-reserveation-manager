@@ -20,8 +20,8 @@ const CourtCard = ({ court }) => {
         {/* Agrega más información básica de la cancha aquí */}
       </div>
       <div className="buttons is-right is-rounded p-3">
-            <Link to="/" className="button is-light">Detalle</Link>
-            <Link to="/reservar" className="button is-primary" >Reservar</Link>
+            <Link to="/court-detail" className="button is-light">Detalle</Link>
+            <Link to="/booking" className="button is-primary" >Reservar</Link>
           </div>
     </div>
   );

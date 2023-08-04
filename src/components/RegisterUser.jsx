@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Navbar from "./Navbar";
+
 const RegisterUser = () => {
     const [formData, setFormData] = useState({
       name: '',
@@ -22,60 +24,64 @@ const RegisterUser = () => {
     };
   
     return (
-      <section className="section">
-        <div className="container">
-          <h1 className="title">Registro de Usuario</h1>
-          <form onSubmit={handleSubmit}>
-            <div className="field">
-              <label className="label">Nombre</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
+      <>
+        {/* Menú de navegación */}
+        <Navbar/>
+        <section className="section">
+          <div className="container">
+            <h1 className="title">Registro de Usuario</h1>
+            <form onSubmit={handleSubmit}>
+              <div className="field">
+                <label className="label">Nombre</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
               </div>
-            </div>
-  
-            <div className="field">
-              <label className="label">Correo Electrónico</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
+    
+              <div className="field">
+                <label className="label">Correo Electrónico</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
               </div>
-            </div>
-  
-            <div className="field">
-              <label className="label">Contraseña</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                />
+    
+              <div className="field">
+                <label className="label">Contraseña</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
               </div>
-            </div>
-  
-            <div className="field">
-              <div className="control">
-                <button type="submit" className="button is-primary">Registrar</button>
+    
+              <div className="field">
+                <div className="control">
+                  <button type="submit" className="button is-primary">Registrar</button>
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
-      </section>
+            </form>
+          </div>
+        </section>
+      </>
     );
   }
   

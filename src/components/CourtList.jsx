@@ -22,32 +22,34 @@ const CourtList = ({ courts, itemsPerPage }) => {
   }
 
   return (
-    <section>
-      <div className="columns is-multiline">
-        {currentCourts.map((court) => (
-          <div key={court.id} className="column is-4">
-            <CourtCard court={court} />
-          </div>
-        ))}
-      </div>
-
-      <nav className="pagination" role="navigation" aria-label="pagination">
-        <ul className="pagination-list">
-          {pageNumbers.map((pageNumber) => (
-            <li key={pageNumber}>
-              <button
-                className={`pagination-link ${
-                  pageNumber === currentPage ? 'is-current' : ''
-                } `}
-                onClick={() => handlePageChange(pageNumber)}
-              >
-                {pageNumber}
-              </button>
-            </li>
+    <>
+      <section>
+        <div className="columns is-multiline">
+          {currentCourts.map((court) => (
+            <div key={court.id} className="column is-4">
+              <CourtCard court={court} />
+            </div>
           ))}
-        </ul>
-      </nav>
-    </section>
+        </div>
+
+        <nav className="pagination" role="navigation" aria-label="pagination">
+          <ul className="pagination-list">
+            {pageNumbers.map((pageNumber) => (
+              <li key={pageNumber}>
+                <button
+                  className={`pagination-link ${
+                    pageNumber === currentPage ? 'is-current' : ''
+                  } `}
+                  onClick={() => handlePageChange(pageNumber)}
+                >
+                  {pageNumber}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </section>
+    </>
   );
 };
 
