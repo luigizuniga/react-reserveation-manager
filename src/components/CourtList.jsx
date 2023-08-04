@@ -1,42 +1,55 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
-import CourtDetails from './CourtDetails'; // Importamos el componente CourtDetails
+import CourtCard from './CourtCard';
 
-const CourtList = () => {
-  const [selectedCourt, setSelectedCourt] = useState(null);
+const CourtList = ({ courts, itemsPerPage }) => {
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Supongamos que recibimos el listado de canchas como prop desde el estado del componente padre
-  const courts = [
-    { id: 1, name: 'Cancha 1', sport: 'Fútbol', location: 'Calle Principal 123', hourly_rate: 50.00 },
-    { id: 2, name: 'Cancha 2', sport: 'Tenis', location: 'Avenida Central 456', hourly_rate: 30.00 },
-    // Agregar más datos de canchas aquí
-  ];
-
-  const handleCourtClick = (court) => {
-    // Cuando el usuario haga clic en una cancha, actualizamos el estado para mostrar los detalles de esa cancha
-    setSelectedCourt(court);
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
+  // Lógica para obtener las canchas que se mostrarán en la página actual
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentCourts = courts.slice(startIndex, endIndex);
+
+  // Lógica para generar los números de página en el paginador
+  const totalPages = Math.ceil(courts.length / itemsPerPage);
+  const pageNumbers = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
+
   return (
-    <section className="section">
-      <div className="container">
-        <h1 className="title">Lista de Canchas</h1>
-        <div className="columns">
-          {courts.map((court) => (
-            <div className="column" key={court.id} onClick={() => handleCourtClick(court)}>
-              <div className={`box ${selectedCourt && selectedCourt.id === court.id ? 'selected' : ''}`}>
-                <h2 className="subtitle">{court.name}</h2>
-                <p>Deporte: {court.sport}</p>
-                <p>Ubicación: {court.location}</p>
-                <p>Tarifa por Hora: {court.hourly_rate}</p>
-                {/* Enlace para ver detalles de la cancha */}
-              </div>
-            </div>
-          ))}
-        </div>
-        {selectedCourt && <CourtDetails court={selectedCourt} />}
+    <section>
+      <div className="columns is-multiline">
+        {currentCourts.map((court) => (
+          <div key={court.id} className="column is-4">
+            <CourtCard court={court} />
+          </div>
+        ))}
       </div>
+
+      <nav className="pagination" role="navigation" aria-label="pagination">
+        <ul className="pagination-list">
+          {pageNumbers.map((pageNumber) => (
+            <li key={pageNumber}>
+              <button
+                className={`pagination-link ${
+                  pageNumber === currentPage ? 'is-current' : ''
+                } `}
+                onClick={() => handlePageChange(pageNumber)}
+              >
+                {pageNumber}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </section>
   );
-}
+};
 
 export default CourtList;
+
