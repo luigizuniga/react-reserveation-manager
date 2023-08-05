@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Navbar from "./Navbar";
 import CourtList from './CourtList';
 
@@ -62,10 +63,19 @@ const Home = () => {
         {/* Contenido del componente Home */}
 
         {/* ... Código de las secciones ... */}
-        <section className="welcome-section" style={{ backgroundColor: '#f2f2f2', padding: '50px 0' }}>
-          <div className="container">
-            <h2 className="title is-2">¡Bienvenido a la Plataforma de Reserva de Canchas!</h2>
-            <p>Aquí podrás reservar canchas para diferentes deportes de forma rápida y sencilla.</p>
+        <section className="hero is-fullheight is-primary is-bold">
+          <div className="hero-body">
+            <div className="container has-text-centered">
+              <h1 className="title">Bienvenido a la Aplicación de Reservas de Canchas</h1>
+              <p className="subtitle">
+                Esta es una aplicación para agendar canchas deportivas de manera sencilla.
+              </p>
+              <div className="buttons is-centered">
+                <Link to="/courts" className="button is-primary is-large">
+                  Ver Canchas Disponibles
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 

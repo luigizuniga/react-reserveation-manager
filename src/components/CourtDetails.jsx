@@ -3,6 +3,7 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import Navbar from "./Navbar";
 
+
 const CourtDetails = () => {
   // Datos específicos de la cancha (sustituye estos valores con datos reales)
   const courtData = {
